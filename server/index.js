@@ -13,6 +13,13 @@ const config = {
 
 const connection = mysql.createConnection(config);
 
+connection.query(`
+  create table if not exists people(
+    id int auto_increment primary key, 
+    name varchar(50) not null
+  );
+`);
+
 const sql = (name) => { return `insert into people(name) values('${name}')`; };
 
 
